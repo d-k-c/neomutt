@@ -21,6 +21,8 @@
 #ifndef _HCACHE_H_
 #define _HCACHE_H_ 1
 
+#include "mutt.h"
+
 struct header_cache;
 typedef struct header_cache header_cache_t;
 
