@@ -4360,6 +4360,8 @@ const struct command_t Commands[] = {
   { "source",		parse_source,		0 },
   { "spam",		parse_spam_list,	MUTT_SPAM },
   { "nospam",		parse_spam_list,	MUTT_NOSPAM },
+  { "shutdown-hook",	mutt_parse_hook,	MUTT_SHUTDOWNHOOK},
+  { "startup-hook",	mutt_parse_hook,	MUTT_STARTUPHOOK },
   { "subscribe",	parse_subscribe,	0 },
   { "timeout-hook",	mutt_parse_hook,	MUTT_TIMEOUTHOOK },
   { "toggle",		parse_set,		MUTT_SET_INV },
