@@ -994,7 +994,7 @@ then
     fi
     
     dnl -- Tokyo Cabinet --
-    if test "$with_tokyocabinet" != "no" \
+    if test "$with_tokyocabinet" != "no" && test $hcache_db_used = "no" \
 	    && test "$db_requested" = auto -o "$db_requested" = TokyoCabinet
     then
       if test -n "$with_tokyocabinet" && test "$with_tokyocabinet" != "yes"
@@ -1018,7 +1018,7 @@ then
     fi
 
     dnl -- Kyoto Cabinet --
-    if test "$with_kyotocabinet" != "no" \
+    if test "$with_kyotocabinet" != "no" && test $hcache_db_used = no \
         && test "$db_requested" = auto -o "$db_requested" = KyotoCabinet
     then
       if test -n "$with_kyotocabinet" && test "$with_kyotocabinet" != "yes"
