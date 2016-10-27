@@ -949,7 +949,7 @@ then
     fi
     if test -n "$with_kyotocabinet" && test "$with_kyotocabinet" != "no"
     then
-      if test "$db_requested" != "auto"
+      if test $db_requested != auto
       then
         AC_MSG_ERROR([more than one header cache engine requested.])
       else
@@ -958,7 +958,7 @@ then
     fi
     if test -n "$with_qdbm" && test "$with_qdbm" != "no"
     then
-      if test "$db_requested" != "auto"
+      if test $db_requested != auto
       then
         AC_MSG_ERROR([more than one header cache engine requested.])
       else
@@ -967,7 +967,7 @@ then
     fi
     if test -n "$with_gdbm" && test "$with_gdbm" != "no"
     then
-      if test "$db_requested" != "auto"
+      if test $db_requested != auto
       then
         AC_MSG_ERROR([more than one header cache engine requested.])
       else
@@ -976,7 +976,7 @@ then
     fi
     if test -n "$with_bdb" && test "$with_bdb" != "no"
     then
-      if test "$db_requested" != "auto"
+      if test $db_requested != auto
       then
         AC_MSG_ERROR([more than one header cache engine requested.])
       else
@@ -985,7 +985,7 @@ then
     fi
     if test -n "$with_lmdb" && test "$with_lmdb" != "no"
     then
-      if test "$db_requested" != "auto"
+      if test $db_requested != auto
       then
         AC_MSG_ERROR([more than one header cache engine requested.])
       else
@@ -994,8 +994,8 @@ then
     fi
     
     dnl -- Tokyo Cabinet --
-    if test "$with_tokyocabinet" != "no" && test $hcache_db_used = "no" \
-	    && test "$db_requested" = auto -o "$db_requested" = TokyoCabinet
+    if test "$with_tokyocabinet" != "no" && test $hcache_db_used = no \
+	    && test $db_requested = auto -o $db_requested = TokyoCabinet
     then
       if test -n "$with_tokyocabinet" && test "$with_tokyocabinet" != "yes"
       then
@@ -1011,7 +1011,7 @@ then
          hcache_db_used=TokyoCabinet],
         [CPPFLAGS="$OLDCPPFLAGS"
          LDFLAGS="$OLDLDFLAGS"]))
-      if test "$db_requested" != auto && test "$hcache_db_used" != "$db_requested"
+      if test $db_requested != auto && test $hcache_db_used != $db_requested
       then
         AC_MSG_ERROR([Tokyo Cabinet could not be used. Check config.log for details.])
       fi
@@ -1019,7 +1019,7 @@ then
 
     dnl -- Kyoto Cabinet --
     if test "$with_kyotocabinet" != "no" && test $hcache_db_used = no \
-        && test "$db_requested" = auto -o "$db_requested" = KyotoCabinet
+        && test $db_requested = auto -o $db_requested = KyotoCabinet
     then
       if test -n "$with_kyotocabinet" && test "$with_kyotocabinet" != "yes"
       then
@@ -1035,7 +1035,7 @@ then
          hcache_db_used=KyotoCabinet],
         [CPPFLAGS="$OLDCPPFLAGS"
          LDFLAGS="$OLDLDFLAGS"]))
-      if test "$db_requested" != auto && test "$hcache_db_used" != "$db_requested"
+      if test $db_requested != auto && test $hcache_db_used != $db_requested
       then
         AC_MSG_ERROR([Kyoto Cabinet could not be used. Check config.log for details.])
       fi
@@ -1043,20 +1043,20 @@ then
 
     dnl -- QDBM --
     if test "$with_qdbm" != "no" && test $hcache_db_used = no \
-	    && test "$db_requested" = auto -o "$db_requested" = QDBM
+	    && test $db_requested = auto -o $db_requested = QDBM
     then
       if test -n "$with_qdbm" && test "$with_qdbm" != "yes"
       then
         if test -d $with_qdbm/include/qdbm; then
           CPPFLAGS="$CPPFLAGS -I$with_qdbm/include/qdbm"
-	else
+        else
           CPPFLAGS="$CPPFLAGS -I$with_qdbm/include"
-	fi
+        fi
         LDFLAGS="$LDFLAGS -L$with_qdbm/lib"
-      else
-         if test -d /usr/include/qdbm; then
-           CPPFLAGS="$CPPFLAGS -I/usr/include/qdbm"
-	 fi
+      else                                                                                                                                                      
+        if test -d /usr/include/qdbm; then                                                                                                                     
+            CPPFLAGS="$CPPFLAGS -I/usr/include/qdbm"                                                                                                             
+        fi     
       fi
 
       saved_LIBS="$LIBS"
@@ -1070,15 +1070,15 @@ then
         [CPPFLAGS="$OLDCPPFLAGS"
          LDFLAGS="$OLDLDFLAGS"])
       LIBS="$saved_LIBS"
-      if test "$db_requested" != auto && test "$hcache_db_used" != "$db_requested"
+      if test $db_requested != auto && test $hcache_db_used != $db_requested
       then
         AC_MSG_ERROR([QDBM could not be used. Check config.log for details.])
       fi
     fi
 
     dnl -- GDBM --
-    if test x$with_gdbm != xno && test $hcache_db_used = no \
-	    && test "$db_requested" = auto -o "$db_requested" = GDBM
+    if test "$with_gdbm" != "no" && test $hcache_db_used = no \
+	    && test $db_requested = auto -o $db_requested = GDBM
     then
         if test "$with_gdbm" != "yes"
         then
@@ -1099,7 +1099,7 @@ then
           AC_DEFINE(HAVE_GDBM, 1, [GDBM Support])
           hcache_db_used=GDBM
         fi
-        if test "$db_requested" != auto && test "$hcache_db_used" != "$db_requested"
+        if test $db_requested != auto && test $hcache_db_used != $db_requested
         then
           AC_MSG_ERROR([GDBM could not be used. Check config.log for details.])
         fi
@@ -1107,8 +1107,8 @@ then
 
     dnl -- BDB --
     ac_bdb_prefix="$with_bdb"
-    if test x$with_bdb != xno && test $hcache_db_used = no \
-	    && test "$db_requested" = auto -o "$db_requested" = BDB
+    if test "$with_bdb" != "no" && test $hcache_db_used = no \
+	    && test $db_requested = auto -o $db_requested = BDB
     then
         if test x$ac_bdb_prefix = xyes || test x$ac_bdb_prefix = x
         then
@@ -1163,13 +1163,17 @@ then
         else
             AC_MSG_RESULT(no)
         fi
+        if test $db_requested != auto && test $hcache_db_used != $db_requested
+        then
+          AC_MSG_ERROR([BDB could not be used. Check config.log for details.])
+        fi
     fi
 
     dnl -- LMDB --
-    if test x$with_lmdb != xno && test $hcache_db_used = no \
-	    && test "$db_requested" = auto -o "$db_requested" = LMDB
+    if test "$with_lmdb" != "no" && test $hcache_db_used = no \
+	    && test $db_requested = auto -o $db_requested = LMDB
     then
-        if test "$with_lmdb" != "yes"
+        if test "$with_lmdb" != "yes" && test "$with_lmdb" != "NONE"
         then
           CPPFLAGS="$CPPFLAGS -I$with_lmdb/include"
           LDFLAGS="$LDFLAGS -L$with_lmdb/lib"
@@ -1188,7 +1192,7 @@ then
           MUTT_LIB_OBJECTS="$MUTT_LIB_OBJECTS hcache-lmdb.o"
           hcache_db_used=LMDB
         fi
-        if test "$db_requested" != auto && test "$hcache_db_used" != "$db_requested"
+        if test $db_requested != auto && test $hcache_db_used != $db_requested
         then
           AC_MSG_ERROR([LMDB could not be used. Check config.log for details.])
         fi
