@@ -45,6 +45,8 @@
 #include "hcversion.h"
 #include "md5.h"
 
+int hcache_open(header_cache_t * h, const char * path);
+
 static unsigned int hcachever = 0x0;
 
 typedef union

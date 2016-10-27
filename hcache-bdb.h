@@ -16,7 +16,5 @@ struct header_cache
   char lockfile[_POSIX_PATH_MAX];
 };
 
-int hcache_open(header_cache_t * h, const char * path);
-
 #endif /* _HCACHE_BDB_H_ */
 #endif /* HAVE_BDB */

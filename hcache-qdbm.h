@@ -15,7 +15,5 @@ struct header_cache
   VILLA *db;
 };
 
-int hcache_open(header_cache_t * h, const char * path);
-
 #endif /* _HCACHE_QDBM_H_ */
 #endif /* HAVE_QDBM */

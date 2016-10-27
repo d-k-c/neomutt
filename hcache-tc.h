@@ -13,7 +13,5 @@ struct header_cache
   TCBDB *db;
 };
 
-int hcache_open(header_cache_t * h, const char * path);
-
 #endif /* _HCACHE_TC_H_ */
 #endif /* HAVE_TC */

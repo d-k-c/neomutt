@@ -13,7 +13,5 @@ struct header_cache
   GDBM_FILE db;
 };
 
-int hcache_open(header_cache_t * h, const char * path);
-
 #endif /* _HCACHE_GDBM_H_ */
 #endif /* HAVE_GDBM */

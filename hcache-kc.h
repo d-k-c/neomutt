@@ -13,7 +13,5 @@ struct header_cache
   KCDB *db;
 };
 
-int hcache_open(header_cache_t * h, const char * path);
-
 #endif /* _HCACHE_KC_H_ */
 #endif /* HAVE_KC */

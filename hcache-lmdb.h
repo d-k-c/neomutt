@@ -49,7 +49,5 @@ struct header_cache
   enum mdb_txn_mode txn_mode;
 };
 
-int hcache_open(header_cache_t * h, const char * path);
-
 #endif /* _HCACHE_LMDB_H_ */
 #endif /* HAVE_LMDB */
