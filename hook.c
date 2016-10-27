@@ -59,19 +59,26 @@ int mutt_parse_hook (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
   mutt_buffer_init (&pattern);
   mutt_buffer_init (&command);
 
-  if (*s->dptr == '!')
+  if (~data & MUTT_GLOBALHOOK)
   {
-    s->dptr++;
-    SKIPWS (s->dptr);
-    not = 1;
+    if (*s->dptr == '!')
+    {
+      s->dptr++;
+      SKIPWS (s->dptr);
+      not = 1;
+    }
+
+    mutt_extract_token (&pattern, s, 0);
+
+    if (!MoreArgs (s))
+    {
+       strfcpy (err->data, _("too few arguments"), err->dsize);
+       goto error;
+    }
   }
-
-  mutt_extract_token (&pattern, s, 0);
-
-  if (!MoreArgs (s))
+  else
   {
-    strfcpy (err->data, _("too few arguments"), err->dsize);
-    goto error;
+    mutt_extract_token (&pattern, s, 0);
   }
 
   mutt_extract_token (&command, s, (data & (MUTT_FOLDERHOOK | MUTT_SENDHOOK | MUTT_SEND2HOOK | MUTT_ACCOUNTHOOK | MUTT_REPLYHOOK)) ?  MUTT_TOKEN_SPACE : 0);
