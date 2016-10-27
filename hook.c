@@ -583,7 +583,13 @@ void mutt_timeout_hook (void)
   }
 }
 
-
+/**
+ * mutt_startup_shutdown_hook - Execute any startup/shutdown hooks
+ * @type: Hook type: MUTT_STARTUPHOOK or MUTT_SHUTDOWNHOOK
+ *
+ * The user can configure hooks to be run on startup/shutdown.
+ * This function finds all the matching hooks and executes them.
+ */
 void mutt_startup_shutdown_hook (int type)
 {
   HOOK *hook;
