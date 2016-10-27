@@ -8,7 +8,6 @@ void *
 mutt_hcache_fetch_raw (header_cache_t *h, const char *filename,
                        size_t(*keylen) (const char *fn))
 {
-  void *key;
   int sp;
 
   if (!h)
