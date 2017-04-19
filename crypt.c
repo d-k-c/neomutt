@@ -33,15 +33,9 @@
 #include "mime.h"
 #include "mutt_crypt.h"
 #include "mutt_curses.h"
-#ifdef HAVE_LOCALE_H
 #include <locale.h>
-#endif
-#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
-#endif
-#ifdef HAVE_SYS_RESOURCE_H
 #include <sys/resource.h>
-#endif
 
 
 /* print the current time to avoid spoofing of the signature output */
@@ -79,7 +73,7 @@ void crypt_forget_passphrase(void)
 }
 
 
-#if defined(HAVE_SETRLIMIT) && (!defined(DEBUG))
+#if (!defined(DEBUG))
 
 static void disable_coredumps(void)
 {
@@ -93,14 +87,14 @@ static void disable_coredumps(void)
   }
 }
 
-#endif /* HAVE_SETRLIMIT */
+#endif
 
 
 int crypt_valid_passphrase(int flags)
 {
   int ret = 0;
 
-#if defined(HAVE_SETRLIMIT) && (!defined(DEBUG))
+#if !defined(DEBUG)
   disable_coredumps();
 #endif
 

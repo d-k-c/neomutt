@@ -33,15 +33,8 @@
 #include "mutt_crypt.h"
 #include "mutt_curses.h"
 #include "mutt_menu.h"
-#ifdef HAVE_LOCALE_H
 #include <locale.h>
-#endif
-#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
-#endif
-#ifdef HAVE_SYS_RESOURCE_H
-#include <sys/resource.h>
-#endif
 
 struct smime_command_context
 {

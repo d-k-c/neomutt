@@ -30,9 +30,7 @@
 #include "hcache_backend.h"
 #include "hcversion.h"
 #include "md5.h"
-#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
-#endif
 
 static unsigned int hcachever = 0x0;
 

@@ -39,18 +39,12 @@
 #include "mutt_menu.h"
 #include "pager.h"
 #include "sort.h"
-#ifdef HAVE_LOCALE_H
 #include <locale.h>
-#endif
 #ifdef HAVE_LANGINFO_D_T_FMT
 #include <langinfo.h>
 #endif
-#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
-#endif
-#ifdef HAVE_SYS_RESOURCE_H
 #include <sys/resource.h>
-#endif
 
 #define PKA_NOTATION_NAME "pka-address@gnupg.org"
 #define is_pka_notation(notation)                                              \

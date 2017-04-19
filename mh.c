@@ -42,9 +42,7 @@
 #include "mutt_curses.h"
 #include "mx.h"
 #include "sort.h"
-#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
-#endif
 #ifdef USE_NOTMUCH
 #include "mutt_notmuch.h"
 #endif
